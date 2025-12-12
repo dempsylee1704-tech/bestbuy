@@ -18,17 +18,19 @@ animals_data = load_data('animals_data.json')
 animals_output = ""
 
 for animal in animals_data:
+    animals_output += '<li class="cards__item">\n'
     if "name" in animal:
-        animals_output += f"Name: {animal['name']}\n"
+        animals_output += f"Name: {animal['name']}<br/>\n"
 
     if "characteristics" in animal and "diet" in animal["characteristics"]:
-        animals_output += f"Diet: {animal['characteristics']['diet']}\n"
+        animals_output += f"Diet: {animal['characteristics']['diet']}<br/>\n"
 
     if "locations" in animal and len(animal["locations"]) > 0:
-        animals_output += f"Location: {animal['locations'][0]}\n"
+        animals_output += f"Location: {animal['locations'][0]}<br/>\n"
 
     if "type" in animal:
-        animals_output += f"Type: {animal['type']}\n"
+        animals_output += f"Type: {animal['type']}<br/>\n"
+    animals_output += '</li>\n'
 
 final_html = template_html.replace("__REPLACE_ANIMALS_INFO__", animals_output)
 
