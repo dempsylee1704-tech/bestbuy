@@ -2,14 +2,25 @@ from products import Product
 
 class Store:
     def __init__(self, product_lst):
+        if not isinstance(product_lst, list):
+            raise TypeError("product_lst must be a list")
+        for p in product_lst:
+            if not isinstance(p, Product):
+                raise TypeError("All items in product_lst must be Product objects")
         self.product_lst = product_lst
 
 
     def add_product(self, product):
+        if not isinstance(product, Product):
+            raise TypeError("product must be a Product")
         self.product_lst.append(product)
 
 
     def remove_product(self, product):
+        if not isinstance(product, Product):
+            raise TypeError("product must be a Product")
+        if product not in self.product_lst:
+            raise ValueError("Product not in store")
         self.product_lst.remove(product)
 
 
